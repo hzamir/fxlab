@@ -7,12 +7,12 @@ import de.felixroske.jfxsupport.FXMLController;
 import javafx.fxml.FXML;
 
 @FXMLController
-public class HelloworldController
+public class CrawlController
 {
   private CrawlConfig config;
   private EnumsConfig enumsConfig;
 
-  @Autowired public HelloworldController(CrawlConfig config, EnumsConfig enumsConfig)
+  @Autowired public CrawlController(CrawlConfig config, EnumsConfig enumsConfig)
   {
     this.config = config;
     this.enumsConfig = enumsConfig;
