@@ -33,6 +33,9 @@ public class CrawlController
   @FXML private TextField minutesText;
   @FXML private TextField depthText;
 
+  @FXML private Button run;
+
+  private StandinWorker worker;
 
   private void populate()
   {
@@ -96,7 +99,17 @@ public class CrawlController
 
     userAgent.getSelectionModel().selectedItemProperty().addListener((observable, ov, v) -> config.setUseragent(v));
 
-
+    run.setOnAction((event) -> {
+      if(worker == null) {
+        run.textProperty().set("Stop");
+        worker = new StandinWorker(config);
+        new Thread(worker::start, "Worker").start();
+      } else {
+        worker.stop();
+        worker = null;
+        run.textProperty().set("Start");
+      }
+    });
   }
 
   public void initialize()
