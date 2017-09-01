@@ -1,0 +1,40 @@
+spring:
+    jmx:
+        enabled: false
+
+javafx:
+    title: MyCoolApp
+ #   appicons:
+ #     - /spider.png
+
+
+
+# this is an unofficial random sampling of some useragents, since these influence webcrawling results
+useragents:
+  chromeOnMac: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36
+  chrome: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0
+  ccc: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0
+  edge: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0
+  iphone: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0
+
+webcrawl:
+  defaults:
+    outputFormat: xml
+    useragent:  ${useragents.chromeOnMac}
+    initialUrl: http://wiprodigital.com
+    stayInDomain: true                 # stay in domain (don't go to another domain)
+    allowSubdomains: true              # if inside domain are subdomains ok?
+    minutesLimit: 1                    # max time
+    depthLimit: 10                     # max depth
+    linkTypes:                         #specify tag[attribute] combinations that contain urls that crawler should report
+      - a[href]
+      - link[href]
+      - iframe[src]
+      - embed[src]
+      - input[src]
+      - script[src]
+      - img[src]
+      - object[data]
+      - q[cite]
+      - del[cite]
+

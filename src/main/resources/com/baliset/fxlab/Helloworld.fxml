@@ -1,26 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <Label layoutX="397.0" layoutY="112.0" prefHeight="34.0" prefWidth="78.0" text="Varys">
-      <font>
-        <Font size="28.0" />
-      </font>
-    </Label>
-    <ImageView fitHeight="202.0" fitWidth="198.0" layoutX="388.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-        <Image url="@spider.png" />
-      </image>
-         <effect>
-            <Glow level="0.6" />
-         </effect>
-    </ImageView>
-  </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.baliset.fxlab.HelloworldController">
+  <ImageView id="logo" fitHeight="202.0" fitWidth="198.0" layoutX="458.0" layoutY="10.0" pickOnBounds="true"
+             preserveRatio="true">
+    <image>
+      <Image url="@spider.png"/>
+    </image>
+    <effect>
+      <Glow level="0.6"/>
+    </effect>
+  </ImageView>
+  <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="-Infinity"
+         minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="100.0" text="Url:"
+         textAlignment="RIGHT"/>
+  <TextField id="initialUrl" fx:id="initialUrl" layoutX="128.0" layoutY="33.0" prefHeight="27.0" prefWidth="309.0"/>
+  <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="74.0" maxHeight="-Infinity" maxWidth="-Infinity"
+         minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="100.0" text="Domain:"
+         textAlignment="RIGHT"/>
+  <TextField id="initialDomain" fx:id="initialDomain" editable="false" layoutX="128.0" layoutY="69.0" prefHeight="27.0"
+             prefWidth="309.0"/>
+
+
+  <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="110.0" maxHeight="-Infinity" maxWidth="-Infinity"
+         minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="100.0" text="Restricted:"
+         textAlignment="RIGHT"/>
+  <CheckBox fx:id="stayInDomain" layoutX="128.0" layoutY="105.0" prefHeight="27.0" prefWidth="309.0"/>
+  <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="146.0" maxHeight="-Infinity" maxWidth="-Infinity"
+         minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="100.0" text="Subdomains:"
+         textAlignment="RIGHT"/>
+  <CheckBox fx:id="allowSubdomains" layoutX="128.0" layoutY="141.0" prefHeight="27.0" prefWidth="309.0"/>
+  <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="182.0" maxHeight="-Infinity" maxWidth="-Infinity"
+         minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="100.0" text="Format:"
+         textAlignment="RIGHT"/>
+  <TextField fx:id="outputFormat" layoutX="128.0" layoutY="177.0" prefHeight="27.0" prefWidth="309.0"/>
+  <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity"
+         minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="100.0" text="Depth Limit:"
+         textAlignment="RIGHT"/>
+  <Slider fx:id="depthLimit" layoutX="181.0" layoutY="213.0" prefHeight="27.0" prefWidth="256.0"/>
+  <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="254.0" maxHeight="-Infinity" maxWidth="-Infinity"
+         minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="100.0" text="Time Limit:"
+         textAlignment="RIGHT"/>
+  <Slider fx:id="minutesLimit" layoutX="181.0" layoutY="249.0" prefHeight="27.0" prefWidth="256.0"/>
+
+  <!--
+  <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="290.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="100.0" text="UserAgent:" textAlignment="RIGHT" />
+  <ComboBoxListCell fx:id="userAgent" layoutX="128.0" layoutY="285.0" prefHeight="27.0" prefWidth="309.0" />
+      -->
+
 </Pane>
