@@ -4,28 +4,34 @@ import javafx.scene.control.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import de.felixroske.jfxsupport.FXMLController;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 
 @FXMLController
 public class HelloworldController
 {
+  private CrawlConfig config;
+  private EnumsConfig enumsConfig;
 
-  CrawlConfig config;
-
-  @Autowired public HelloworldController(CrawlConfig config)
+  @Autowired public HelloworldController(CrawlConfig config, EnumsConfig enumsConfig)
   {
     this.config = config;
+    this.enumsConfig = enumsConfig;
   }
 
-  @FXML public TextField initialUrl;
-  @FXML public TextField initialDomain;
-  @FXML private TextField outputFormat;      // xml, yaml, or json
+  @FXML private TextField initialUrl;
+  @FXML private TextField initialDomain;
+  @FXML private ChoiceBox<String> outputFormat;      // xml, yaml, or json
 
   @FXML private CheckBox stayInDomain;     // stay in domain (don't go to another domain)
   @FXML private CheckBox allowSubdomains;  // if inside domain are subdomains ok?
   @FXML private Slider     minutesLimit;     // max time
   @FXML private Slider     depthLimit;       // max depth
+
+  @FXML private ComboBox<String> userAgent;      // xml, yaml, or json
+
+
+  @FXML private TextField minutesText;
+  @FXML private TextField depthText;
 
 
   private void populate()
@@ -35,18 +41,25 @@ public class HelloworldController
 
     stayInDomain.selectedProperty().set(config.isStayInDomain());
     allowSubdomains.selectedProperty().set(config.isAllowSubdomains());
-    outputFormat.textProperty().set(config.getOutputFormat());
-    minutesLimit.valueProperty().set(config.getMinutesLimit());
+
+    outputFormat.getItems().addAll(enumsConfig.getOutputFormats());
+
+    outputFormat.setValue(config.getOutputFormat());
+    int mins =    config.getMinutesLimit();
+    minutesLimit.valueProperty().set(mins);
+    minutesText.textProperty().set(""+mins);
+
     depthLimit.valueProperty().set(config.getDepthLimit());
+    depthText.textProperty().set(""+config.getDepthLimit());
 
     minutesLimit.setMin(1);
-    minutesLimit.setMax(300);
-    minutesLimit.setMajorTickUnit(20);
-    minutesLimit.setMinorTickCount(5);
-    minutesLimit.setShowTickMarks(true);
-    
+    minutesLimit.setMax(enumsConfig.getMaxMinutes());
+
     depthLimit.setMin(1);
-    depthLimit.setMax(300);
+    depthLimit.setMax(enumsConfig.getMaxDepth());
+    
+    userAgent.getItems().addAll(enumsConfig.getUseragents());
+    userAgent.setValue(config.getUseragent());
   }
 
 
@@ -59,34 +72,29 @@ public class HelloworldController
     initialUrl.textProperty().addListener((observable, ov, v) -> {
       config.setInitialUrl(v);
       initialDomain.textProperty().set(config.getInitialDomain());    // it is refreshed
-      p();
     });
 
     stayInDomain.selectedProperty().addListener((observable, ov, v) -> {
       config.setStayInDomain(v);
       allowSubdomains.disableProperty().setValue(!v);
-      p();
     });
 
-    allowSubdomains.selectedProperty().addListener((observable, ov, v) -> {
-      config.setAllowSubdomains(v);
-      p();
-    });
+    allowSubdomains.selectedProperty().addListener((observable, ov, v) -> config.setAllowSubdomains(v));
 
-    outputFormat.textProperty().addListener((observable, ov, v) -> {
-      config.setOutputFormat(v);
-      p();
-    });
+    outputFormat.getSelectionModel().selectedItemProperty().addListener((observable, ov, v) -> config.setOutputFormat(v));
 
     depthLimit.valueProperty().addListener((observable, ov, v) -> {
       config.setDepthLimit(v.intValue());
-      p();
+      depthText.textProperty().set(""+v.intValue());
     });
 
     minutesLimit.valueProperty().addListener((observable, ov, v) -> {
-      config.setMinutesLimit(v.intValue());
-      p();
+      int val = v.intValue();
+      config.setMinutesLimit(val);
+      minutesText.textProperty().set(""+val);
     });
+
+    userAgent.getSelectionModel().selectedItemProperty().addListener((observable, ov, v) -> config.setUseragent(v));
 
 
   }
@@ -97,16 +105,5 @@ public class HelloworldController
     bindings();   // bind the controls to the configuration settings
   }
 
-//  @Autowired
-//  private AwesomeActionService actionService;
-
-
-//
-//  @FXML private void setInitialUrl(final Event event) {
-//    final String s = config.getInitialUrl();
-//    initialUrl.setText(s);
-//  }
-
-  
 
 }

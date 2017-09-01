@@ -11,13 +11,13 @@ import java.util.*;
 @ConfigurationProperties(prefix = "webcrawl.defaults")
 public class CrawlConfig implements InitializingBean
 {
-  private String  useragent;
-  private String  initialUrl;
-  private boolean stayInDomain;     // stay in domain (don't go to another domain)
-  private boolean allowSubdomains;  // if inside domain are subdomains ok?
-  private int     minutesLimit;     // max time
-  private int     depthLimit;       // max depth
-  private String outputFormat;      // xml, yaml, or json
+   private String  useragent;
+   private String  initialUrl;
+   private boolean stayInDomain;     // stay in domain (don't go to another domain)
+   private boolean allowSubdomains;  // if inside domain are subdomains ok?
+   private int     minutesLimit;     // max time
+   private int     depthLimit;       // max depth
+   private String outputFormat;      // xml, yaml, or json
 
   private List<String> linkTypes = new ArrayList<>();
 
