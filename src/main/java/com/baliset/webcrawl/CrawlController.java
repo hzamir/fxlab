@@ -1,4 +1,4 @@
-package com.baliset.fxlab;
+package com.baliset.webcrawl;
 
 import javafx.scene.control.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +7,12 @@ import de.felixroske.jfxsupport.FXMLController;
 import javafx.fxml.FXML;
 
 @FXMLController
-public class HelloworldController
+public class CrawlController
 {
   private CrawlConfig config;
   private EnumsConfig enumsConfig;
 
-  @Autowired public HelloworldController(CrawlConfig config, EnumsConfig enumsConfig)
+  @Autowired public CrawlController(CrawlConfig config, EnumsConfig enumsConfig)
   {
     this.config = config;
     this.enumsConfig = enumsConfig;
@@ -33,6 +33,9 @@ public class HelloworldController
   @FXML private TextField minutesText;
   @FXML private TextField depthText;
 
+  @FXML private Button run;
+
+  private StandinWorker worker;
 
   private void populate()
   {
@@ -96,7 +99,17 @@ public class HelloworldController
 
     userAgent.getSelectionModel().selectedItemProperty().addListener((observable, ov, v) -> config.setUseragent(v));
 
-
+    run.setOnAction((event) -> {
+      if(worker == null) {
+        run.textProperty().set("Stop");
+        worker = new StandinWorker(config);
+        new Thread(worker::start, "Worker").start();
+      } else {
+        worker.stop();
+        worker = null;
+        run.textProperty().set("Start");
+      }
+    });
   }
 
   public void initialize()

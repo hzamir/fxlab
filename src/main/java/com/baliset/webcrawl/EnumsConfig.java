@@ -1,4 +1,4 @@
-package com.baliset.fxlab;
+package com.baliset.webcrawl;
 
 import org.springframework.beans.factory.*;
 import org.springframework.boot.context.properties.*;

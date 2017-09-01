@@ -13,7 +13,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.baliset.fxlab.HelloworldController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.baliset.webcrawl.CrawlController">
   <ImageView id="logo" fitHeight="202.0" fitWidth="198.0" layoutX="458.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
     <effect>
       <Glow level="0.6" />
@@ -48,7 +48,7 @@
   <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="282.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="100.0" text="Progress:" textAlignment="RIGHT" />
   <ProgressBar layoutX="128.0" layoutY="282.0" prefHeight="20.0" prefWidth="309.0" progress="0.0" />
 
-  <Button layoutX="499.0" layoutY="242.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" text="Start" />
+  <Button fx:id="run" layoutX="499.0" layoutY="242.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" text="Start" />
 
 
 
