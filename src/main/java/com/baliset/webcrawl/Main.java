@@ -1,4 +1,4 @@
-package com.baliset.fxlab;
+package com.baliset.webcrawl;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;

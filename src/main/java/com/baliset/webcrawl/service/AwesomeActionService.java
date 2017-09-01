@@ -1,4 +1,4 @@
-package com.baliset.fxlab.service;
+package com.baliset.webcrawl.service;
 
 public interface AwesomeActionService
 {

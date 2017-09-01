@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="FxLab" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.baliset.fxlab.Main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.baliset.webcrawl.Main" />
     <option name="ENABLE_JMX_AGENT" value="false" />
     <option name="ALTERNATIVE_JRE_PATH" />
     <module name="flxab" />

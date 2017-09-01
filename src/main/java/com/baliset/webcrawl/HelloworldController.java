@@ -1,4 +1,4 @@
-package com.baliset.fxlab;
+package com.baliset.webcrawl;
 
 import javafx.scene.control.*;
 import org.springframework.beans.factory.annotation.Autowired;

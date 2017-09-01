@@ -1,4 +1,4 @@
-package com.baliset.fxlab.service;
+package com.baliset.webcrawl.service;
 
 import org.springframework.stereotype.Component;
 
